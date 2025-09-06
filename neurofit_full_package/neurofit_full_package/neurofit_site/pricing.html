@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroFit Pricing</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/ga4.js"></script>
+  <script src="assets/js/consent.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/stripe.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets/img/logo.svg" alt="NeuroFit logo">
+        <span>NeuroFit</span>
+      </div>
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="guide.html">Guide</a></li>
+        <li><a href="pricing.html" aria-current="page">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <h1>Pricing</h1>
+    <p>Choose the plan that fits your needs. All plans include lifetime access to the core NeuroFit guide, interactive workbook and updates. Prices shown are in pounds sterling (£).</p>
+    <div class="pricing-plans">
+      <div class="pricing-plan">
+        <h3>Starter</h3>
+        <p class="price">£47</p>
+        <ul>
+          <li>Full programme guide</li>
+          <li>Interactive workbook</li>
+          <li>No‑equipment workouts</li>
+          <li>Email support (14 days)</li>
+        </ul>
+        <button onclick="checkout('price_basic')">Buy now</button>
+      </div>
+      <div class="pricing-plan">
+        <h3>Pro</h3>
+        <p class="price">£97</p>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Equipment‑based workouts</li>
+          <li>Macro calculator & meal plans</li>
+          <li>Priority email support (30 days)</li>
+        </ul>
+        <button onclick="checkout('price_plus')">Buy now</button>
+      </div>
+      <div class="pricing-plan">
+        <h3>Elite</h3>
+        <p class="price">£197</p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Monthly live group call</li>
+          <li>Advanced metrics integration</li>
+          <li>One‑to‑one kick‑off consultation</li>
+        </ul>
+        <button onclick="checkout('price_premium')">Buy now</button>
+      </div>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <dl>
+        <dt>What is included in the programme?</dt>
+        <dd>The programme includes the full training guide, interactive workbook, exercise demos and nutrition guidance. Higher tiers add live coaching and advanced tracking.</dd>
+        <dt>Do I need any special equipment?</dt>
+        <dd>No. The Starter tier is completely equipment‑free. Higher tiers offer optional equipment‑based progressions.</dd>
+        <dt>Can I upgrade later?</dt>
+        <dd>Yes. You can upgrade from Starter to Pro or Elite at any time by paying the difference. Your progress carries over.</dd>
+        <dt>Is this programme suitable for corporate teams?</dt>
+        <dd>Absolutely. We offer corporate packages and licences. See the <a href="corporate.html">corporate page</a> for details.</dd>
+        <dt>What if I have ADHD?</dt>
+        <dd>NeuroFit was designed with neurodiverse individuals in mind. Sessions are short, varied and incorporate cognitive drills to improve focus and impulse control.</dd>
+        <dt>How is this different from a regular workout plan?</dt>
+        <dd>Traditional programmes focus solely on the body. NeuroFit integrates brain training, mindset work and lifestyle coaching for a holistic approach.</dd>
+        <dt>How long does the programme last?</dt>
+        <dd>You can complete the core programme in 6–8 weeks, but many users continue to use the workouts and metrics indefinitely.</dd>
+        <dt>Do you offer refunds?</dt>
+        <dd>Yes. You have a 14‑day cooling‑off period from the date of purchase in line with UK consumer law. If you have not downloaded or consumed the digital content during this period, we will process a full refund. Once you start accessing the content, you waive your right to cancel (see our returns policy for details).</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>Guarantee &amp; Refund Policy</h2>
+      <p>We stand behind the quality of NeuroFit. If you decide the programme isn’t right for you within 14 days of purchase and you haven’t started accessing the digital content, simply email us at support@neurofit.co.uk for a full refund. This cooling‑off period is mandated by the UK Consumer Contracts Regulations and applies to digital content not yet downloaded or streamed【21252875622574†L81-L87】.</p>
+    </section>
+    <section>
+      <h2>Testimonials</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>“As a busy solicitor, NeuroFit helped me regain focus and energy without long gym sessions.”</p>
+          <strong>Sarah L., London</strong>
+        </div>
+        <div class="testimonial">
+          <p>“The combination of physical and cognitive drills has transformed my morning routine – I feel sharper all day.”</p>
+          <strong>Michael O., Manchester</strong>
+        </div>
+        <div class="testimonial">
+          <p>“Our whole team tried the corporate plan and loved how easy it was to fit sessions into the workday.”</p>
+          <strong>Priya R., Bristol</strong>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Compare Plans</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Starter</th>
+              <th>Pro</th>
+              <th>Elite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Full guide &amp; workbook</td><td>✔︎</td><td>✔︎</td><td>✔︎</td></tr>
+            <tr><td>No‑equipment workouts</td><td>✔︎</td><td>✔︎</td><td>✔︎</td></tr>
+            <tr><td>Equipment progressions</td><td>—</td><td>✔︎</td><td>✔︎</td></tr>
+            <tr><td>Macro calculator &amp; meal plans</td><td>—</td><td>✔︎</td><td>✔︎</td></tr>
+            <tr><td>Priority support</td><td>Email (14d)</td><td>Email (30d)</td><td>Call &amp; email (60d)</td></tr>
+            <tr><td>Monthly live group call</td><td>—</td><td>—</td><td>✔︎</td></tr>
+            <tr><td>One‑to‑one consultation</td><td>—</td><td>—</td><td>✔︎</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="legal/terms.html">Terms &amp; Conditions</a>
+      <a href="legal/privacy.html">Privacy Policy</a>
+      <a href="legal/cookies.html">Cookie Policy</a>
+      <a href="legal/medical.html">Medical Disclaimer</a>
+      <a href="legal/returns.html">Returns &amp; Refunds</a>
+    </div>
+    <p>&copy; 2025 NeuroFit. All rights reserved.</p>
+  </footer>
+  <div class="cookie-banner" role="region" aria-label="Cookies on NeuroFit">
+    <p>We use essential cookies to make our service work and, with your consent, analytics cookies to understand how you use our site. You can accept or reject analytics cookies.</p>
+    <button class="accept" onclick="acceptCookies()">Accept</button>
+    <button class="reject" onclick="rejectCookies()">Reject</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,410 @@
+/*
+ * NeuroFit Website Main Stylesheet
+ *
+ * This stylesheet defines a mobile‑first, accessible UI for the NeuroFit static
+ * website. Colours and spacing are derived from the project palette
+ * (primary: #0B1F2A, accent: #33C3A1). Components are kept simple for
+ * performance and maintainability. Semantic HTML elements (header, nav,
+ * main, section, footer) are assumed in the markup.
+ */
+
+:root {
+  --color-primary: #0B1F2A;
+  --color-accent: #33C3A1;
+  --color-light: #F8FAFC;
+  --color-dark: #0B1F2A;
+  --font-base: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-base);
+  background: #ffffff;
+  color: var(--color-dark);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Skip link improves keyboard navigation by allowing users to jump
+   directly to the main content. Hidden off‑screen until focused. */
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  background: #ffffff;
+  color: var(--color-primary);
+  z-index: 10000;
+}
+
+/* Header and navigation styling */
+header {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 1rem;
+  position: relative;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+header nav .logo img {
+  height: 40px;
+  margin-right: 0.5rem;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+header nav ul li a {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Mobile navigation */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    background: var(--color-primary);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+  header nav ul.open {
+    display: block;
+  }
+  .mobile-nav-toggle {
+    display: block;
+  }
+}
+
+main {
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Hero section used on landing page */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.hero .cta-btn {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.hero .cta-btn:hover {
+  background: #2aa486;
+}
+
+/* Features grid */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature {
+  flex: 1 1 280px;
+  background: #f6f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.feature h3 {
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+section {
+  margin-top: 2rem;
+}
+
+footer {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 2rem 1rem;
+}
+
+footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+footer a {
+  color: #b0dfe0;
+}
+
+footer a:hover {
+  color: var(--color-accent);
+}
+
+button {
+  cursor: pointer;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+th {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Video wrapper for responsive videos */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  padding-top: 25px;
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Testimonials */
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.testimonial {
+  flex: 1 1 280px;
+  background: #f6f9fc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.testimonial p {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial strong {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* FAQ styles using definition list */
+.faq {
+  margin-top: 2rem;
+}
+
+.faq h3 {
+  margin-bottom: 0.5rem;
+}
+
+.faq dt {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.faq dd {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Pricing plans */
+.pricing-plans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pricing-plan {
+  flex: 1 1 280px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+.pricing-plan h3 {
+  margin-bottom: 0.5rem;
+}
+
+.pricing-plan .price {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.pricing-plan ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pricing-plan li {
+  padding: 0.25rem 0;
+}
+
+.pricing-plan button {
+  margin-top: 1rem;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Lead form */
+.lead-form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lead-form input,
+.lead-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.lead-form button {
+  align-self: flex-start;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Cookie banner */
+.cookie-banner {
+  background: #003247;
+  color: #ffffff;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none;
+}
+
+.cookie-banner p {
+  margin-bottom: 0.5rem;
+}
+
+.cookie-banner button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.cookie-banner button.accept {
+  background: var(--color-accent);
+  color: var(--color-dark);
+}
+
+.cookie-banner button.reject {
+  background: #666666;
+  color: #ffffff;
+}

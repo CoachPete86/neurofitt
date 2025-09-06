@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroFit – Cognitive &amp; Physical Training</title>
+  <meta name="description" content="NeuroFit combines physical training with cognitive drills to help you thrive. Designed for ADHD individuals, busy professionals and corporate teams.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/ga4.js"></script>
+  <script src="assets/js/consent.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/stripe.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets/img/logo.svg" alt="NeuroFit logo">
+        <span>NeuroFit</span>
+      </div>
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="guide.html">Guide</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <h1>Train your brain and body together</h1>
+      <p>NeuroFit is a cognitive‑physical training programme that fits into your busy life. Boost focus, resilience and energy with science‑backed workouts designed for neurodiverse individuals and high‑performing teams.</p>
+      <button class="cta-btn" onclick="window.location.href='pricing.html'">Get Started</button>
+    </section>
+    <section>
+      <h2>Why NeuroFit?</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Integrated Training</h3>
+          <p>Every session blends physical exercise with cognitive drills to enhance neuroplasticity and mental agility.</p>
+        </div>
+        <div class="feature">
+          <h3>Designed for Busy Lives</h3>
+          <p>Workouts are 20–30 minutes long and can be done anywhere – no equipment required unless you choose to level up.</p>
+        </div>
+        <div class="feature">
+          <h3>Evidence‑Based</h3>
+          <p>Built on research linking movement, focus and memory, with guidance on nutrition and recovery.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Interactive Workbook</h2>
+      <p>Our companion workbook (a Google Sheets template) lets you log workouts, plan meals, calculate macros and visualise progress. Duplicate it into your own account and start tracking today.</p>
+    </section>
+    <section>
+      <h2>Testimonials</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>“I’ve tried many programmes before, but NeuroFit is the first that kept my attention and improved my focus at work.”</p>
+          <strong>James H., Edinburgh</strong>
+        </div>
+        <div class="testimonial">
+          <p>“The short sessions are perfect for my schedule. I’ve noticed a big difference in my concentration and mood.”</p>
+          <strong>Amelia W., Birmingham</strong>
+        </div>
+        <div class="testimonial">
+          <p>“As an HR manager, I saw engagement levels soar when we introduced NeuroFit to our team. Highly recommended.”</p>
+          <strong>Richard K., Leeds</strong>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Stay Informed</h2>
+      <p>Sign up to receive a free sample session and regular tips on cognitive‑physical training.</p>
+      <form class="lead-form" name="lead" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="lead">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required aria-required="true">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required aria-required="true">
+        <button type="submit">Send me the sample</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="legal/terms.html">Terms &amp; Conditions</a>
+      <a href="legal/privacy.html">Privacy Policy</a>
+      <a href="legal/cookies.html">Cookie Policy</a>
+      <a href="legal/medical.html">Medical Disclaimer</a>
+      <a href="legal/returns.html">Returns &amp; Refunds</a>
+    </div>
+    <p>&copy; 2025 NeuroFit. All rights reserved.</p>
+  </footer>
+  <div class="cookie-banner" role="region" aria-label="Cookies on NeuroFit">
+    <p>We use essential cookies to make our service work and, with your consent, analytics cookies to understand how you use our site. You can accept or reject analytics cookies.</p>
+    <button class="accept" onclick="acceptCookies()">Accept</button>
+    <button class="reject" onclick="rejectCookies()">Reject</button>
+  </div>
+</body>
+</html>
