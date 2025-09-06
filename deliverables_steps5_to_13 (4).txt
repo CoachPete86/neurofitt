@@ -1,0 +1,367 @@
+
+Step 5 — Compliance Pack (UK legal text)
+=======================================
+
+The compliance pack comprises fully drafted legal documents tailored to a UK audience. These documents have been integrated into the NeuroFit static site (`/legal` folder) and summarised here for reference. Citations are provided where relevant. All information uses UK spelling and reflects the requirements of the UK GDPR, Consumer Contracts Regulations and best‑practice medical guidance.
+
+### 1 — Terms & Conditions
+
+The Terms & Conditions define the contractual relationship between NeuroFit and its customers. Key points include:
+
+* **Service description:** NeuroFit provides digital training programmes and does not offer medical advice. Customers must be at least 18 years old. Intellectual property rights remain with NeuroFit.
+* **Pricing and payment:** All prices are listed in pound sterling and inclusive of VAT. Customers consent to the immediate supply of digital content and acknowledge that the statutory 14‑day cancellation right is lost once streaming or downloading beginshttps://www.lawble.co.uk/consumer-contracts-regulations/#:~:text=the%20phone%2C%20or%20off.
+* **Cancellation & refunds:** Customers can change their mind within 14 days if they haven’t accessed the content. A discretionary 7‑day satisfaction guarantee is offered after access has started. Subscription renewals can be cancelled at any time for the next billing period.
+* **Liability:** NeuroFit excludes liability for any indirect or consequential loss. Participation in exercise programmes is at the customer’s own risk. A medical disclaimer is provided separately.
+* **Governing law:** The agreement is governed by the laws of England and Wales.
+
+### 2 — Privacy Policy (UK GDPR compliant)
+
+The privacy notice explains how NeuroFit collects, uses and protects personal data. Following ICO guidancehttps://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/the-right-to-be-informed/what-privacy-information-should-we-provide/#:~:text=The%20UK%C2%A0GDPR%20specifies%20what%20you,and%20when%20it%20is%20required, it covers:
+
+* **Identity and contact details:** NeuroFit Ltd. is the data controller; contact details are provided.
+* **Types of data collected:** Account information, payment details (processed by Stripe), usage statistics and cookies. Special category data (e.g. health information) is not intentionally collected.
+* **Purposes and lawful bases:** To fulfil contracts (programme delivery), legitimate interests (service improvement), consent (analytics cookies, marketing emails) and compliance with legal obligations.
+* **Data sharing:** Personal data may be shared with payment processors (Stripe), analytics providers (Google Analytics) and email services. Transfers outside the UK are subject to appropriate safeguards.
+* **Retention periods:** Account data is kept for the duration of the subscription plus six years for tax compliance. Analytics data is stored for 26 months. Customers can request deletion at any time.
+* **Rights:** The policy explains rights of access, rectification, erasure, restriction, objection and data portability. It provides instructions for lodging complaints with the Information Commissioner’s Office.
+
+### 3 — Cookie Policy
+
+The cookie policy defines the use of cookies and similar technologies. Drawing on GOV.UK guidancehttps://design-system.service.gov.uk/components/cookie-banner/#:~:text=Show%20the%20cookie%20banner%20every,your%20service%20until%20they%20either, it states that:
+
+* Only essential cookies are set by default. Analytics cookies (Google Analytics) are blocked until the user accepts via the banner.
+* The banner remains visible until the user accepts or rejects analytics cookies; the choice is stored for one year.
+* Cookies are not placed using fixed/sticky positioning that would obscure content, complying with accessibility requirements.
+* A detailed cookie table lists cookie names, purposes, and expiry.
+
+### 4 — Medical Disclaimer
+
+The medical disclaimer emphasises that NeuroFit’s content is educational and not a substitute for professional medical advice. Participants are advised to consult a doctor before starting any programme, participate at their own risk and understand that results vary. NeuroFit does not provide emergency or crisis care. The full text is included in `/legal/medical.html`.
+
+### 5 — Returns & Refunds Policy
+
+Under the Consumer Contracts Regulations, customers have a 14‑day right to change their mind for digital content purchases. This right is lost once the content is accessedhttps://www.lawble.co.uk/consumer-contracts-regulations/#:~:text=the%20phone%2C%20or%20off. NeuroFit asks customers to tick a box acknowledging this loss during checkouthttps://www.lawble.co.uk/consumer-contracts-regulations/#:~:text=The%20CCR%20also%20state%20that,receive%20confirmation%20of%20the%20contract. A discretionary 7‑day money‑back guarantee is offered after access begins, and subscriptions may be cancelled at any time for future periods. Details of refunds for physical goods (if offered) and instructions for requesting a refund are included.
+
+
+Step 6 — Analytics + Trust
+==========================
+
+This deliverable outlines how to implement analytics ethically, build trust with users and meet accessibility and performance standards.
+
+### 1 — GA4 embed snippet and event tracking
+
+Place the following code in the `<head>` of each page, replacing `G-XXXXXXXXXX` with your Google Analytics 4 measurement ID. The snippet is based on Google’s recommended implementationhttps://developers.google.com/tag-platform/gtagjs#:~:text=%3C%21,dataLayer.push%28arguments%29%3B%7D%20gtag%28%27js%27%2C%20new%20Date and includes consent‑initialised settings:
+
+```html
+<!-- Google Analytics 4 (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}  
+  // Set default consent to denied until user makes a choice
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  // Example of custom event tracking: record button clicks
+  function trackButton(label) {
+    gtag('event', 'button_click', { 'event_category': 'engagement', 'event_label': label });
+  }
+</script>
+```
+
+Call `trackButton('buy_starter')` or similar when users click CTA buttons to monitor funnel performance. Always anonymise IP addresses and avoid sending personally identifiable information.
+
+### 2 — Cookie consent banner text
+
+The cookie banner informs users about optional analytics cookies. It should:
+
+* State that essential cookies are used to make the service work; analytics cookies are only set with consent.
+* Offer clear **Accept** and **Reject** buttons; once selected, hide the banner and store the choice for a year.
+* Not block access to content or be fixed over the page; use non‑sticky positioning as recommended by GOV.UKhttps://design-system.service.gov.uk/components/cookie-banner/#:~:text=Show%20the%20cookie%20banner%20every,your%20service%20until%20they%20either.
+* Provide a link to the Cookie Policy for more details.
+
+Example banner text (included in the site):
+
+> “We use essential cookies to make our service work and, with your consent, analytics cookies to understand how you use our site. You can accept or reject analytics cookies.”
+
+### 3 — Accessibility checklist (WCAG 2.2 AA)
+
+Use this checklist during development and QA to meet Web Content Accessibility Guidelines (WCAG) 2.2 AA:
+
+1. **Text alternatives:** Provide descriptive `alt` text for images; use `<figcaption>` or visible captions for complex media.
+2. **Structural headings:** Use semantic headings (`<h1>…<h6>`) in logical order; include a skip‑navigation link at the top of each page.
+3. **Colour contrast:** Ensure text and interface components meet minimum contrast ratios (4.5:1 for normal text, 3:1 for large text). Avoid relying solely on colour to convey information.
+4. **Keyboard navigation:** All interactive elements (links, buttons, form controls) must be operable via keyboard alone. Provide visible focus states.
+5. **Forms and labels:** Associate labels with form controls using `for` and `id`; describe what each input expects; indicate required fields.
+6. **ARIA landmarks and roles:** Use `<nav>`, `<main>` and `<footer>` to support screen readers; supplement with ARIA roles where necessary.
+7. **Animations and flashing:** Avoid animations that flash more than three times per second. Provide controls to pause or disable animations.
+8. **Error prevention:** Validate input and provide clear, accessible error messages. Avoid irreversible actions without confirmation.
+9. **Responsive design:** Ensure layout reflows correctly on small screens; avoid horizontal scrolling. Test using screen‑reader and zoom tools.
+10. **Page language:** Declare `lang="en"` on `<html>` and update if content changes language (e.g. in the Superset Builder when practising a foreign language).
+
+### 4 — Performance checklist
+
+1. **Optimise images:** Use SVG for logos and icons; compress JPEG/PNG; specify width and height to prevent layout shifts; use lazy loading (`loading="lazy"`).
+2. **Minify CSS and JavaScript:** Combine and minify files; remove unused rules; use `defer` or `async` for scripts where appropriate.
+3. **Preload critical assets:** Preload fonts (`<link rel="preload" as="font" href="/assets/fonts/…">`) and above‑the‑fold images to avoid delays.
+4. **Use caching headers:** When hosting, enable caching for static assets (e.g. one year). In Netlify this can be configured via `_headers` file.
+5. **Reduce third‑party scripts:** Only include necessary analytics and payment scripts; load them after consent. Monitor performance impact.
+6. **Validate HTML and CSS:** Use the W3C validator to ensure markup is well‑formed; fix any errors that could hinder browsers’ rendering optimisations.
+
+
+Step 7 — Sales Funnel Assets
+===========================
+
+### 1 — Executive 4‑page whitepaper brief
+
+The whitepaper, titled **“Harnessing Neuro‑Cognitive Training for High‑Performing Professionals”**, serves as a lead magnet for corporate decision‑makers and individuals. It should be formatted as a professionally designed PDF (~2,000 words) and structured as follows:
+
+* **Page 1 – The Challenge of Modern Productivity**: Discuss the cognitive overload faced by professionals and ADHD individuals in demanding environments. Present statistics on lost productivity due to mental fatigue, presenteeism and burnout. Introduce the concept of cognitive‑physical training as a solution.
+* **Page 2 – The Science Behind NeuroFit**: Summarise research on neuroplasticity, dual‑task training and the benefits of combining physical movement with cognitive tasks. Include citations from peer‑reviewed studies demonstrating improvements in working memory, attention and executive function when exercise and cognition are paired. Position NeuroFit as an evidence‑based programme.
+* **Page 3 – Programme Design and Outcomes**: Describe the NeuroFit methodology (periodised training blocks, cognitive drills, no‑equipment options). Highlight measurable outcomes such as increased focus, reduced stress and better decision‑making. Include case studies or anonymised data from early adopters (e.g. improvement percentages in reaction time or productivity metrics).
+* **Page 4 – Implementing NeuroFit in Your Organisation**: Provide a step‑by‑step outline of how a company can roll out NeuroFit: stakeholder buy‑in, pilot groups, integration into wellness policies, measurement of results. End with a strong call to action directing readers to sign up for a discovery call or download the full programme.
+
+### 2 — 7‑email onboarding sequence
+
+Use this sequence after a user signs up for a paid programme or downloads the whitepaper. Emails should be plain‑text with occasional bold headings for clarity. Include “View in browser” links and unsubscribe options. Timing is indicated relative to sign‑up.
+
+1. **Day 0 – Welcome to NeuroFit**
+   *Subject:* Welcome – Here’s How to Get Started with NeuroFit
+   
+   Hello {{first_name}},
+   
+   Welcome to NeuroFit! We’re excited to guide you through a journey that combines physical training with cognitive sharpening. Start by logging into your dashboard and watching our 5‑minute quick‑start video. In your workbook, fill out today’s date in the Weekly Planner and schedule your first no‑equipment session. Let us know if you have any questions – we’re here to help.
+   
+   Train smart,
+   The NeuroFit Team
+
+2. **Day 2 – The Science of Dual‑Task Training**
+   *Subject:* Why NeuroFit Works: The Science Behind Dual‑Task Training
+   
+   Did you know that integrating cognitive challenges into physical training stimulates neuroplasticity? In this email we break down how dual‑task training enhances working memory, attention and decision‑making. Read the attached infographic and try today’s exercise: perform a plank while spelling difficult words. Share your experience in our community forum.
+
+3. **Day 4 – Mastering the No‑Equipment Track**
+   *Subject:* No Gym? No Problem – Your NeuroFit Bodyweight Plan
+   
+   Not everyone has access to equipment. That’s why we’ve built a no‑equipment track you can do anywhere – living room, hotel or park. Open the Exercise Library and try the Bear Crawl & Alphabet drill today. Record your session in the Exercise Log and notice how your coordination improves with each attempt.
+
+4. **Day 7 – Fuel Your Brain and Body**
+   *Subject:* Nutrition for Focus – How to Plan Your Meals
+   
+   Training is only half the equation. Proper nutrition fuels your brain and stabilises energy levels. In this email we explain how to use the Food List and Macro Calculator to plan meals that support cognitive performance. We’ve included a sample one‑day meal plan to get you started.
+
+5. **Day 10 – Tracking Your Progress**
+   *Subject:* Are You Progressing? Here’s How to Measure Success
+   
+   It’s easy to feel like you’re spinning your wheels. By using the Progress Dashboard, you can see tangible improvements in training load and cognitive challenges completed. Today, update your measurements and watch the charts adjust. Celebrate your wins, no matter how small!
+
+6. **Day 14 – Stay Motivated: Real Stories**
+   *Subject:* Success Stories from NeuroFit Athletes
+   
+   When the initial excitement fades, motivation can dip. Hear from three NeuroFit clients who overcame ADHD‑related challenges and boosted their productivity using our methods. Use their tips to stay consistent. If you’re struggling, reply to this email – we’re here to support you.
+
+7. **Day 20 – Next Steps and Upsell**
+   *Subject:* Ready for More? Unlock Advanced Metrics and Corporate Packages
+   
+   You’ve spent three weeks building new habits – well done! If you’re hungry for deeper insights and more personalised coaching, check out our Pro and Elite tiers. You’ll gain access to advanced metrics, 1:1 coaching calls and corporate wellness solutions. Use code NEURO20 for 20 % off your first month. If you’d prefer to stay on your current plan, no action is needed – just keep training!
+
+### 3 — Renewal + Upsell Logic
+
+* **Renewal notices:** Send an email 30 days before subscription renewal reminding the customer of upcoming charges, highlighting what they’ve achieved and any new features added since they joined. Send follow‑up reminders at 14 days and 3 days. Include a one‑click link to upgrade or cancel.
+* **Usage‑based triggers:** If analytics show high engagement (>75 % of modules completed), present an in‑app banner offering an upgrade to the next tier. Conversely, if engagement is low (<25 %), suggest a free coaching call to re‑engage rather than an upsell.
+* **Corporate upsell:** For customers using individual plans from corporate domains, send an email after 60 days explaining the benefits of a company‑wide package (group discounts, bespoke training, dedicated support). Offer a meeting to discuss enterprise licensing.
+* **Limited‑time promotions:** Use seasonal events (e.g. January health kick) to offer temporary discounts. Always set clear start/end dates and use countdown timers judiciously.
+
+
+Step 9 — Corporate Pack
+=======================
+
+### 1 — Executive summary (one page)
+
+The NeuroFit Corporate Wellness Programme is a comprehensive solution designed for organisations that want to enhance employee productivity, resilience and engagement. Unlike traditional wellness schemes that focus solely on physical health, NeuroFit integrates cognitive drills into physical workouts to improve attention, memory and decision‑making. Studies show that dual‑task training can enhance executive function and reduce burnout. Companies implementing NeuroFit report improvements in employee focus, reduced sick days and higher team morale. The programme includes a scalable online platform, a workbook for tracking progress, live virtual sessions and optional on‑site workshops. Pricing is tiered based on headcount with bespoke packages available. A dedicated account manager ensures smooth onboarding and ongoing support. Implementing NeuroFit signals a commitment to employee wellbeing and innovation, giving organisations a competitive advantage in attracting and retaining top talent.
+
+### 2 — 12‑slide pitch deck outline
+
+1. **Title:** NeuroFit Corporate Wellness – Enhance Productivity and Wellbeing
+   * subtitle: “Combining physical training with cognitive development”
+
+2. **Problem Statement:** Highlight statistics on workplace stress, ADHD prevalence, lost productivity and the limitations of traditional wellness programmes.
+
+3. **The Science:** Summarise research supporting neuro‑cognitive training; illustrate how movement enhances cognitive function.
+
+4. **Solution Overview:** Introduce NeuroFit’s methodology; dual‑task training, periodised workouts, nutrition guidance and progress tracking.
+
+5. **Programme Components:** Detail the product – online guide, exercise library, interactive workbook, corporate portal, live coaching sessions.
+
+6. **Employee Benefits:** Describe individual outcomes such as improved focus, reduced stress, increased energy and better decision‑making.
+
+7. **Business Benefits:** Demonstrate organisational ROI – lower absenteeism, higher productivity, increased retention and improved team dynamics.
+
+8. **Case Studies:** Present data from pilot programmes (e.g. reduction in errors, percentage increase in productivity). Use anonymised testimonials.
+
+9. **Implementation Plan:** Outline the onboarding process (assessment, pilot group, roll‑out, review) and timeline (typically 12 weeks).
+
+10. **Pricing & Packages:** Provide high‑level pricing tiers based on number of employees; mention custom options and discounts for long‑term commitments.
+
+11. **Team & Credentials:** Introduce the leadership team (Pete Ryan) and advisors; mention relevant qualifications, insurance and track record in endurance sports and coaching.
+
+12. **Call to Action & Next Steps:** Invite corporate decision‑makers to schedule a consultation or request a proposal; include contact details.
+
+
+Step 10 — Operations & QA Documents
+=================================
+
+### 1 — Support contact text
+
+If customers need help, they can email **support@neurofit.co.uk** or use the contact form on the website. Support is available Monday to Friday, 09:00–17:00 UK time. We aim to respond within one working day. For urgent technical issues (e.g. payment failures), please include “URGENT” in the subject line. Our mailing address and company registration details are provided in the Terms & Conditions.
+
+### 2 — Onboarding checklist
+
+Use this checklist internally to onboard new customers smoothly:
+
+1. **Payment verification:** Confirm payment via Stripe; send receipt.
+2. **Account creation:** Generate user account; assign appropriate access level (Starter, Pro or Elite).
+3. **Send welcome email:** Use Email 1 from the onboarding sequence with personalised login details.
+4. **Provide workbook:** Share link to the workbook template; verify access permissions.
+5. **Schedule orientation call (Pro/Elite tiers):** Book a 30‑minute call within the first week to assess goals and answer questions.
+6. **Add to analytics:** Create anonymised user ID in GA4 for event tracking.
+7. **Set renewal reminders:** Schedule renewal notices according to plan length.
+8. **Follow‑up:** After one week, check engagement metrics; send personalised encouragement if usage is low.
+
+### 3 — Feedback loop process
+
+Regular feedback is essential for continual improvement. NeuroFit will:
+
+* **Collect surveys:** Send quarterly surveys to participants to rate satisfaction, perceived benefits and suggestions. Use a combination of quantitative scales and open text.
+* **Monitor behaviour:** Analyse workbook usage, session completion rates and email engagement. Identify patterns of dropout or high engagement.
+* **Hold focus groups:** Organise virtual focus groups with a diverse sample of users twice per year to discuss pain points and ideas.
+* **Review support tickets:** Categorise and analyse support queries monthly to spot recurring issues (e.g. login problems, unclear instructions). Prioritise fixes based on frequency and severity.
+* **Iterate:** Document proposed changes in the changelog and assign to development sprints. Communicate updates via email and update the changelog accordingly.
+
+### 4 — CHANGELOG template
+
+Create a `CHANGELOG.md` file to record all changes. Use the following format:
+
+```
+# Changelog
+
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/) and adheres to [Semantic Versioning](https://semver.org/).
+
+## [Unreleased]
+- Planned: describe upcoming features or fixes.
+
+## [1.0.0] – 2025-09-06
+- Initial launch: included complete NeuroFit programme, website, interactive workbook and corporate pack.
+
+## [1.0.1] – YYYY-MM-DD
+- Bug fix: corrected broken link in guide.html.
+- Improvement: Updated exercise library with new videos.
+
+```
+
+Replace the date with the actual release date. Each entry should summarise changes at a high level; use subsections for Added, Changed, Fixed, Removed if needed.
+
+### 5 — Version tag rules
+
+Follow semantic versioning for tagging releases:
+
+* **MAJOR version (X.y.z):** Bump when making incompatible API changes or overhauling major functionality (e.g. launching a new version of the programme).
+* **MINOR version (x.Y.z):** Bump when adding functionality in a backwards‑compatible manner (e.g. adding new exercises or a new analytics module).
+* **PATCH version (x.y.Z):** Bump when making backwards‑compatible bug fixes (e.g. correcting typos or fixing broken links).
+* **Pre‑release identifiers:** Use tags such as `-beta` or `-rc1` for versions under active testing.
+* **Tag format:** When releasing on Git, create a tag like `v1.2.3` with an annotated message summarising the release.
+
+
+Step 11 — Final Packaging
+========================
+
+The final package includes all web pages and documents delivered through previous steps. On the website, the index page acts as the hub linking to:
+
+* **Guide:** `/guide.html` – provides the canonical Quick Start instructions, no‑equipment track, exercise library, sample week, meal planning, progress tracking and advanced metrics. Anchors allow users to jump between sections easily.
+* **Pricing:** `/pricing.html` – outlines membership tiers, features and one‑click Stripe checkout buttons. A FAQ section answers common questions and sets expectations about refunds and cancellations.
+* **About:** `/about.html` – introduces Pete Ryan, his credentials, philosophy, and links to his LinkedIn profile. Reinforces authority and trust.
+* **Corporate:** `/corporate.html` – summarises the corporate offering and links to the full pitch deck outline. Encourages business clients to reach out for bespoke packages.
+* **Legal:** `/legal/terms.html`, `/legal/privacy.html`, `/legal/cookies.html`, `/legal/medical.html`, `/legal/returns.html` – houses all compliance documents.
+
+These pages are connected through the top navigation bar and the footer. The JS and CSS assets are organised under `/assets`. The workbook and exercise demo library are linked within the guide. Sales funnel assets (whitepaper and emails) are delivered via email sequences and downloads rather than hosted on the site. This organisation makes it easy to update individual parts without breaking the entire package.
+
+
+Step 13 — Deployment & Launch Instructions
+========================================
+
+### 1 — Hosting on GitHub Pages
+
+1. Create a new repository (e.g. `neurofit-site`) on GitHub under your account.
+2. Push the contents of the `neurofit_site` folder to the repository’s main branch (or a `gh-pages` branch if you prefer). Ensure the `.html`, `.css`, `.js`, `.svg` and image files are included.
+3. In the repository settings, enable GitHub Pages by selecting the branch containing the site (usually `main`) and the `/root` folder. GitHub will publish the site at `https://username.github.io/neurofit-site/`.
+4. Test navigation, forms and cookie banner. Note that Stripe and GA4 will not work without live keys.
+
+### 2 — Hosting on Netlify
+
+1. Sign in to Netlify and click **New site from Git**.
+2. Connect your GitHub repository and select `main` as the branch. Set **Publish directory** to `neurofit_site` (if the folder is at root) or simply leave blank if you copy the contents directly.
+3. Netlify will build and deploy the static site automatically. It provides a free HTTPS‑enabled domain (e.g. `neurofit.netlify.app`).
+4. To use a custom domain, go to **Domain management** and add your domain. Update your DNS records to point to Netlify’s servers (CNAME or A records). Netlify will generate an SSL certificate automatically.
+
+### 3 — Adding Stripe keys and GA4 IDs
+
+1. Log in to your Stripe dashboard and create a **publishable key** and **secret key** for your production environment.
+2. In `/assets/js/stripe.js`, replace the placeholder publishable key and price IDs with your actual values. Ensure each button has the correct price ID for the corresponding tier.
+3. Replace `G-XXXXXXXXXX` in `ga4.js` and the GA snippet with your real measurement ID. Verify that events are firing by checking the Realtime view in the GA dashboard.
+4. For Netlify deployments, store secret keys as environment variables in the build settings and reference them using Netlify Functions if you need server‑side calls. Never expose secret keys in client‑side code.
+
+### 4 — DNS + SSL setup
+
+* **GitHub Pages:** For a custom domain, add a `CNAME` file containing your domain (e.g. `www.neurofit.co.uk`) in the repository’s root. Then create a CNAME record at your registrar pointing to `username.github.io`.
+* **Netlify:** After adding your domain, Netlify provides DNS instructions. Update your registrar’s nameservers or add A/CNAME records as directed. Netlify issues SSL certificates automatically via Let’s Encrypt.
+
+### 5 — Cookie consent check
+
+After deploying, open your site in a private browser window:
+
+1. Confirm that the cookie banner appears on the first visit and does not scroll with the page (no sticky positioning).
+2. Use browser dev tools to verify that no GA cookies (e.g. `_ga`) are set before clicking **Accept**. After acceptance, `_ga` should appear and events should send.
+3. Ensure preferences persist across pages and visits for at least one year. Rejecting cookies should block GA scripts entirely.
+
+### 6 — Publishing the workbook as a Google Sheet template
+
+1. Create a master version of the workbook in your Google Drive.
+2. Share it using the **Anyone with the link can view** permission. Copy the share link.
+3. In your guide page, add a button or link labelled “Download the workbook” pointing to the share URL. Instruct users to use **File → Make a copy** to create their own editable version.
+4. Alternatively, publish the workbook to the web (File → Publish to the web) to embed read‑only versions of specific sheets in the guide.
+
+### 7 — Testing payment and analytics flows
+
+1. In Stripe, enable test mode and create test price IDs. Replace the production IDs in `stripe.js` with test IDs.
+2. Click the “Buy now” buttons on the pricing page. You should be redirected to Stripe Checkout. Use a test card (e.g. `4242 4242 4242 4242`) to complete payment. Confirm that the success URL returns you to a thank‑you page (you will need to build one if desired).
+3. Open your site with cookies accepted and perform actions such as clicking buttons or submitting the lead form. Use GA’s Realtime reports to verify events.
+4. Repeat with cookies rejected to ensure that no analytics requests are sent.
+
+### 8 — Scheduling the first 20 marketing posts
+
+Create a content calendar covering at least 20 posts across LinkedIn, Instagram and your blog. Include a mix of educational content, testimonials, behind‑the‑scenes footage and promotional offers. Suggested schedule:
+
+* **Week 1:** Launch announcement; introduction to NeuroFit principles; founder story; teaser of the exercise library.
+* **Week 2:** Science explainer on neuro‑cognitive training; client testimonial; preview of the workbook; Q&A session.
+* **Week 3:** Deep dive into nutrition guidance; behind‑the‑scenes video of filming workouts; poll on favourite cognitive drills; early results from beta testers.
+* **Week 4:** Corporate programme case study; blog post summarising the whitepaper; limited‑time discount; user‑generated content contest.
+* **Week 5:** Reminder of money‑back guarantee; highlight upcoming features; invitation to webinar; repost top performing content.
+
+Schedule posts using a social media management tool (e.g. Buffer, Hootsuite). Use analytics to refine your content strategy.
+
+### 9 — Final launch checklist
+
+* **Domain:** DNS records correctly point to Netlify/GitHub Pages; SSL certificate active.
+* **Payment:** Stripe publishable keys and price IDs replaced; test transactions successful.
+* **Analytics:** GA4 measurement ID inserted; cookie banner works; events firing only after consent.
+* **Legal:** All legal pages accessible; links in footer correct; cookie policy matches implementation.
+* **Accessibility:** Manual audit against WCAG 2.2 AA checklist; keyboard navigation tested; alt text present.
+* **Performance:** Lighthouse score above 90 on mobile; images compressed; scripts minified; no console errors.
+* **Forms:** Lead magnet form connected to Netlify; thank‑you message displays; anti‑spam measures (honeypot) enabled.
+* **Content:** All links functional; copy proof‑read; placeholder images replaced where indicated; testimonials are genuine and approved.
+* **Marketing:** Whitepaper finalised and hosted; email sequence loaded into your email service provider; social media posts drafted and scheduled.
+
+Completing this checklist will help ensure a smooth launch with minimal surprises. Once live, continue monitoring analytics, feedback and performance to iterate on the product.

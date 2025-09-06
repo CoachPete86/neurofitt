@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFit — Focus. Resilience. Wellbeing.</title>
+  <meta name="description" content="Cognitive‑physical training for better focus, resilience, and wellbeing." />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <meta property="og:title" content="NeuroFit" />
+  <meta property="og:description" content="Cognitive‑physical training for better focus, resilience, and wellbeing." />
+  <meta property="og:image" content="/assets/img/social-card.jpg" />
+</head>
+<body>
+  <header class="container">
+    <nav aria-label="Main">
+      <a href="/index.html" aria-current="page">Home</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="/corporate.html">Corporate</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <img src="/assets/img/logo.svg" alt="NeuroFit logo" style="height:56px" />
+      <h1>Train the body. Upgrade the brain.</h1>
+      <p class="lede">A 12‑week system that pairs strength and cardio with embedded focus drills and simple nutrition targets.</p>
+      <p>
+        <a class="button" href="/pricing.html">View Pricing</a>
+        <a class="button" href="/guide.html">Read the Guide</a>
+      </p>
+    </section>
+
+    <section class="container grid-2">
+      <div>
+        <h2>Lead magnet: Executive whitepaper</h2>
+        <p>Get a concise guide to the science and the 30‑day pilot plan.</p>
+        <form id="lead-form" class="card" aria-labelledby="lead-h">
+          <h3 id="lead-h">Send me the whitepaper</h3>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" />
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+          <button class="button" type="submit">Get it</button>
+          <p id="lead-msg" class="small" aria-live="polite"></p>
+        </form>
+      </div>
+      <div>
+        <h2>Why it works</h2>
+        <ul class="card">
+          <li>Five structured sessions per week</li>
+          <li>Focus drills built into sets</li>
+          <li>No‑equipment track available</li>
+          <li>Workbook tracking and clear KPIs</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Testimonials</h2>
+      <div class="grid-2">
+        <blockquote class="card">“Simple to start. Powerful results.”<footer>— Client A</footer></blockquote>
+        <blockquote class="card">“The focus drills changed my work days.”<footer>— Client B</footer></blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container small">
+    <nav aria-label="Legal">
+      <a href="/terms.html">Terms</a> • <a href="/privacy.html">Privacy</a> • <a href="/cookies.html">Cookies</a> • <a href="/medical.html">Medical</a> • <a href="/returns.html">Returns</a>
+      <button class="button" type="button" onclick="nfConsentShow()">Cookie settings</button>
+    </nav>
+  </footer>
+
+  <div id="cookie-banner" class="banner" role="region" aria-label="Cookie banner">
+    <p>We use cookies to make NeuroFit work and to measure usage. Accept analytics?</p>
+    <button id="btn-accept" class="button">Accept all</button>
+    <button id="btn-reject" class="button">Reject non‑essential</button>
+    <button id="btn-customise" class="button">Customise</button>
+  </div>
+
+  <script src="/assets/js/consent.js" defer></script>
+  <script src="/assets/js/ga4.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/stripe.js" defer></script>
+</body>
+</html>

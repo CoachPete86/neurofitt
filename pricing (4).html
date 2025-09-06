@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFit Pricing</title>
+  <meta name="description" content="Choose your NeuroFit plan: Starter, Pro, or Elite. UK‑compliant guarantee. Secure Stripe checkout." />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <style>
+    :root { --base:#0B1F2A; --accent:#33C3A1; --muted:#11313e; --text:#e6f2ef; }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--base);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.6}
+    a{color:var(--accent)}
+    header,main,footer{max-width:1100px;margin:0 auto;padding:1rem}
+    .grid{display:grid;gap:1rem}
+    @media(min-width:900px){.grid-cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid var(--muted);border-radius:12px;padding:1rem;background:#0a2530}
+    .price{font-size:2rem;margin:.25rem 0}
+    .btn{display:inline-block;padding:.75rem 1rem;border-radius:.5rem;border:1px solid var(--accent);}
+    .btn:hover{background:#0c2f3d}
+    table{width:100%;border-collapse:collapse;margin:1rem 0}
+    th,td{border:1px solid var(--muted);padding:.5rem;text-align:left}
+    th{background:#0a2530}
+    details{border:1px solid var(--muted);border-radius:.5rem;padding:.75rem;background:#0a2530}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+    .testimonials{display:grid;gap:1rem}
+    @media(min-width:700px){.testimonials{grid-template-columns:repeat(3,1fr)}}
+    blockquote{margin:0;padding:1rem;border-left:4px solid var(--accent);background:#0a2530}
+    nav a{margin-right:.75rem}
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <nav aria-label="Main">
+      <a href="/index.html">Home</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/pricing.html" aria-current="page">Pricing</a>
+      <a href="/about.html">About</a>
+    </nav>
+    <h1>NeuroFit Plans</h1>
+    <p>Simple one‑off pricing. 30‑day performance guarantee. Secure checkout via Stripe.</p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section aria-labelledby="plans">
+      <h2 id="plans">Choose your plan</h2>
+      <div class="grid grid-cols-3" role="list">
+        <article class="card" role="listitem">
+          <h3>Starter</h3>
+          <p class="price">£47</p>
+          <ul>
+            <li>Canonical Guide</li>
+            <li>Interactive Workbook</li>
+            <li>No‑Equipment 12‑Week Plan</li>
+            <li>7‑Email Onboarding</li>
+          </ul>
+          <p><a class="btn" href="https://buy.stripe.com/test_STARTER_EXAMPLE" rel="nofollow noopener" aria-label="Buy Starter for £47">Buy Starter</a></p>
+          <p class="sr-only">Checkout opens in a new secure window.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Pro</h3>
+          <p class="price">£97</p>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Minimal‑Kit 12‑Week Plan</li>
+            <li>Exercise Demo Library</li>
+            <li>Recipe Pack + Macros</li>
+            <li>Priority Email Support</li>
+          </ul>
+          <p><a class="btn" href="https://buy.stripe.com/test_PRO_EXAMPLE" rel="nofollow noopener" aria-label="Buy Pro for £97">Buy Pro</a></p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Elite</h3>
+          <p class="price">£197</p>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>Two 30‑min 1:1 Calls</li>
+            <li>Custom Macro Setup</li>
+            <li>KPI Dashboard (lite)</li>
+            <li>Early Access Updates</li>
+          </ul>
+          <p><a class="btn" href="https://buy.stripe.com/test_ELITE_EXAMPLE" rel="nofollow noopener" aria-label="Buy Elite for £197">Buy Elite</a></p>
+        </article>
+      </div>
+      <p>Note: Replace the example Stripe Payment Link URLs with your own production links.</p>
+    </section>
+
+    <section aria-labelledby="compare">
+      <h2 id="compare">Compare features</h2>
+      <table role="table">
+        <caption class="sr-only">Comparison of features across Starter, Pro, Elite</caption>
+        <thead>
+          <tr><th scope="col">Feature</th><th scope="col">Starter</th><th scope="col">Pro</th><th scope="col">Elite</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Canonical Guide</th><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">Interactive Workbook</th><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">No‑Equipment Plan</th><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">Minimal‑Kit Plan</th><td>–</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">Exercise Demo Library</th><td>–</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">Recipe Pack + Macros</th><td>–</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">Priority Support</th><td>–</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">1:1 Calls</th><td>–</td><td>–</td><td>2×30‑min</td></tr>
+          <tr><th scope="row">KPI Dashboard (lite)</th><td>–</td><td>–</td><td>✓</td></tr>
+          <tr><th scope="row">Early Access</th><td>–</td><td>–</td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="guarantee">
+      <h2 id="guarantee">Guarantee & refunds</h2>
+      <p>30‑day performance guarantee: complete at least 8 logged sessions and if no progress in your tracked metric, email refunds@neurofit.example with your log within 30 days for a full refund. This sits alongside your UK consumer rights.</p>
+      <p>Digital content may be delivered immediately. By purchasing you agree that the statutory 14‑day cancellation right may not apply once access is provided. We still honour the 30‑day performance guarantee.</p>
+    </section>
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="grid">
+        <details><summary>Is this safe for beginners?</summary><p>Yes. Start with the No‑Equipment track and keep RPE ≤7/10. Seek medical advice if unsure.</p></details>
+        <details><summary>What equipment do I need?</summary><p>None for Starter. Pro benefits from a pair of dumbbells or a kettlebell.</p></details>
+        <details><summary>How long are sessions?</summary><p>45–60 minutes, five days per week, with two recovery days.</p></details>
+        <details><summary>Does it help ADHD?</summary><p>It targets attention, working memory, and stress tolerance via combined physical and cognitive drills.</p></details>
+        <details><summary>Can I upgrade later?</summary><p>Yes. Pay the difference within 30 days and we unlock higher‑tier assets.</p></details>
+        <details><summary>Do I need a gym?</summary><p>No. Minimal‑kit options are provided for home or gym.</p></details>
+        <details><summary>How do refunds work?</summary><p>Email your logs to refunds@neurofit.example within 30 days if no progress after ≥8 logged sessions.</p></details>
+        <details><summary>What if I have an injury?</summary><p>Use mobility and reduced range regressions. Stop for pain and seek clinical guidance.</p></details>
+        <details><summary>Is payment secure?</summary><p>Yes. Stripe processes all payments. We do not store card details.</p></details>
+        <details><summary>Do you offer corporate pilots?</summary><p>Yes. See the Corporate page or email corporate@neurofit.example.</p></details>
+      </div>
+    </section>
+
+    <section aria-labelledby="testimonials">
+      <h2 id="testimonials">Testimonials</h2>
+      <div class="testimonials" role="list">
+        <blockquote role="listitem">“Placeholder testimonial A.”<footer>— Client A</footer></blockquote>
+        <blockquote role="listitem">“Placeholder testimonial B.”<footer>— Client B</footer></blockquote>
+        <blockquote role="listitem">“Placeholder testimonial C.”<footer>— Client C</footer></blockquote>
+      </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <nav aria-label="Legal">
+      <a href="/terms.html">Terms</a> •
+      <a href="/privacy.html">Privacy</a> •
+      <a href="/cookies.html">Cookies</a> •
+      <a href="/medical.html">Medical</a> •
+      <a href="/returns.html">Returns</a>
+    </nav>
+    <p><small>© NeuroFit. All rights reserved.</small></p>
+  </footer>
+
+  <noscript>JavaScript is disabled. Stripe checkout opens via secure links above.</noscript>
+  <script src="/assets/js/consent.js" defer></script>
+  <script src="/assets/js/ga4.js" defer></script>
+  <script src="/assets/js/stripe.js" defer></script>
+</body>
+</html>

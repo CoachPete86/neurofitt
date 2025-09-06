@@ -1,0 +1,182 @@
+
+Step 2 — Interactive Workbook Instructions
+=========================================
+
+**Overview**
+
+The NeuroFit workbook is delivered as a Google Sheets template that you can duplicate into your own Google Drive or download as Excel. Each tab provides structure for recording workouts, planning meals, tracking progress and building complex training programmes. The workbook is designed to be used daily; however, it is flexible enough to support weekly or periodic updates.
+
+### How to duplicate the template
+
+1. Open the link to the NeuroFit Workbook template in Google Sheets.
+2. From the **File** menu choose **Make a copy** to save your own copy into your Google Drive. Rename the copy to something meaningful (e.g. “My NeuroFit Workbook”).
+3. If you prefer Microsoft Excel, choose **File → Download → Microsoft Excel (.xlsx)** and save it locally. Note that some formulas (e.g. data validation lists) may behave differently in Excel; test after downloading.
+4. Do **not** edit the original template – any changes you make there could disrupt other users. Always work from your personal copy.
+5. Keep a back‑up copy. Before making major changes, duplicate your workbook (File → Make a copy) so that you can revert if required.
+
+### Tab‑by‑tab instructions
+
+#### 1 — Exercise Log
+
+Use the Exercise Log to record every workout. Each row represents a single exercise within a session.
+
+* **Date** – automatically formatted (dd/mm/yyyy). Use the calendar picker or type the date.
+* **Session ID** – assign a unique identifier for each training session (e.g. 2025‑09‑01‑AM). This allows multiple exercises to be grouped into a single session when summarised.
+* **Exercise** – choose from a drop‑down list populated by the Exercise Library (you can add your own exercises in that sheet). If the exercise isn’t listed, type it manually.
+* **Sets / Reps / Time / Distance / Weight** – fill in the metrics relevant to the exercise. For example, for a run record the time and distance; for a squat record sets, reps and weight. Leave columns that don’t apply blank.
+* **Intensity** – select low, moderate or high from the drop‑down to record perceived intensity. This helps the Progress Dashboard calculate overall training load.
+* **Cognitive task** – if you incorporate a cognitive challenge (e.g. counting backwards, memorising sequences), briefly describe it here.
+* **Notes** – free‑text area for anything worth remembering: technique cues, how you felt, modifications or injuries.
+
+Rows are conditionally formatted: light green indicates completed exercises; pale orange highlights sessions with missing data. Totals and averages appear at the top of the sheet (using `SUMIFS` and `AVERAGEIFS` formulas) to show weekly training volume, average intensity and number of cognitive challenges completed.
+
+#### 2 — Food List
+
+This sheet acts as your personal nutrition database. It contains foods, portion sizes and macronutrients. The Meal Planning tab will look up values from this sheet.
+
+* **Food item** – name of the food or recipe.
+* **Portion size** – define the base portion (e.g. 100 g cooked rice, 1 medium apple). Standardise portion sizes so macros can be calculated reliably.
+* **Calories, Protein (g), Carbs (g), Fat (g), Fibre (g)** – fill in the macro profile for the defined portion. Use trusted sources such as the UK Food Standards Agency database or packaging labels. If values vary (e.g. for homemade meals), estimate and refine over time.
+* **Category** – optional column to label foods (e.g. “protein”, “vegetable”, “snack”). This makes it easier to filter when building meal plans.
+
+You can add rows at any time. The drop‑down lists elsewhere in the workbook will automatically update if you use dynamic range names (e.g. `=OFFSET(A1,1,0,COUNTA(A:A)-1,1)`).
+
+#### 3 — Weekly Planner
+
+Plan your week by scheduling sessions and meals in advance. The planner is laid out with days across the top and time slots down the side.
+
+* **Session type** – choose from drop‑downs such as Strength, Endurance, Mobility, Cognitive and Recovery. Add your own categories in the hidden Data tab.
+* **Focus/Goal** – describe the objective for that session (e.g. “Leg power & memory recall”).
+* **Exercise list** – list the exercises you intend to perform. Use the Exercise Library for inspiration.
+* **Meal planning** – optional sections allow you to assign breakfast, lunch, dinner and snacks. Use the Food List for macro values.
+* **Notes & reminders** – free space for travel schedules, appointments or mood tracking.
+
+Colour coding indicates training intensity throughout the week (greens for easy days, reds for hard sessions). Use the filter view to display individual days or hide meals if you only want to see training entries.
+
+#### 4 — Progress Dashboard
+
+The dashboard pulls data from the Exercise Log and Weekly Planner to visualise your progress. Charts update automatically when you add new entries.
+
+* **Training load graph** – a stacked bar chart shows total minutes or tonnage per week broken down by intensity. Conditional formatting warns if the load has increased more than 10 % week‑to‑week.
+* **Cognitive challenge tracker** – counts the number of sessions with a cognitive element each week.
+* **Body measurements** – if you choose to track weight, waist measurement or resting heart rate, add them to the Measurements table. A line chart will display trends.
+* **Goals checklist** – a simple to‑do list for short‑term targets (e.g. complete 3 endurance sessions). Mark items as done to see your completion rate.
+
+Do not edit the formulas in the dashboard; instead, update source data in other tabs. If a chart appears blank, check that your data ranges are correct and that the pivot tables have been refreshed (Data → Refresh all).
+
+#### 5 — Macro Calculator
+
+This calculator estimates your daily calorie and macronutrient requirements based on your body weight, activity level and goals. It uses widely accepted formulas but should not replace professional dietary advice.
+
+* **Body weight (kg)** – enter your weight. If you prefer stone/pounds, convert using 1 kg = 2.20462 lb.
+* **Sex** – drop‑down field (Female, Male, Other) which adjusts basal metabolic rate (BMR) constants.
+* **Age** – in years.
+* **Height (cm)** – optional; used for more accurate BMR calculations.
+* **Activity level** – choose from Sedentary (×1.2), Lightly active (×1.375), Moderately active (×1.55), Very active (×1.725), Extremely active (×1.9). These multipliers scale your BMR.
+* **Goal** – select Maintain, Fat loss or Muscle gain. Fat‑loss reduces calories by ~15 %, whereas muscle‑gain increases calories by ~10 %.
+
+The calculator outputs daily calories and splits them into protein, carbohydrate and fat targets based on typical ratios (e.g. 40 % carbs, 30 % protein, 30 % fat). You can adjust the ratios if you have specific dietary preferences such as higher fat for low‑carb diets.
+
+#### 6 — Superset Builder
+
+Use the Superset Builder to create paired exercises that alternate between different movement patterns or cognitive demands.
+
+* **Primary exercise** – select from a drop‑down list (populated from the Exercise Library). Choose compound movements such as squats, deadlifts or press‑ups.
+* **Secondary exercise** – choose a contrasting movement (e.g. an upper‑body move if the primary is lower‑body) or a cognitive drill (e.g. memory recall task, math problem). You can leave this blank to perform straight sets.
+* **Rest interval** – specify the rest period between exercises in seconds. Supersets typically use minimal rest (<60 s) to keep the heart rate elevated.
+* **Rounds** – number of supersets you plan to complete.
+
+Formulas will generate a printable run‑sheet with the order of exercises, sets and rest. Use this sheet during workouts to stay on track.
+
+#### 7 — Camp Templates
+
+For clients preparing for multi‑day ultramarathons or endurance events, the Camp Templates offer structured training blocks of 4–6 weeks. Choose a template based on event length (e.g. 50 km, 100 km, stage race) and training focus (heat acclimation, altitude adaptation). Each template includes:
+
+* **Weekly mileage progression** – distance increases gradually with a deload week every 3–4 weeks.
+* **Cognitive drills** – integrated into long runs (e.g. mental maths, memory recall). These drills simulate making decisions under fatigue.
+* **Strength and mobility sessions** – to maintain muscular balance and prevent overuse injuries.
+* **Rest days and cross‑training** – such as swimming or cycling for active recovery.
+
+You can modify any template by adjusting mileage or session types. Be cautious when increasing volume: follow the 10 % rule to minimise injury risk.
+
+#### 8 — Fight Week Run Sheet
+
+In the final week before a competition or presentation, use the Fight Week Run Sheet to taper training, consolidate skills and plan logistics.
+
+* **Daily schedule** – outlines each day’s planned sessions (shorter, high‑quality workouts), travel, rest and sleep.
+* **Nutrition and hydration** – suggests carbohydrate loading, electrolyte strategy, portion sizes and meal timing.
+* **Equipment checklist** – tick‑box list to ensure you have all necessary kit (shoes, sensors, ID, medical kit). Add columns for packing date and condition check.
+* **Mindset cues** – space to write affirmations, visualisation scripts or focus words for each day.
+
+Adhere to your taper plan; avoid adding extra sessions no matter how good you feel. Aim to arrive at your event fresh, mentally prepared and confident.
+
+
+Step 3 — Exercise Demo Library Plan
+===================================
+
+To support neuro‑cognitive training, the exercise library should cover a range of movement patterns, intensities and cognitive challenges. Each exercise entry includes a description, benefits, filming script outline and an HTML embed snippet template. Use the template to embed the corresponding video in the Guide or workbook.
+
+### HTML embed snippet template
+
+Use this snippet to embed each exercise video hosted on your platform (e.g. Vimeo or YouTube). Replace `VIDEO_ID` and `VIDEO_TITLE` with the actual values and update the `description` attribute for screen readers.
+
+```html
+<div class="exercise-video" role="region" aria-label="VIDEO_TITLE">
+  <iframe src="https://player.vimeo.com/video/VIDEO_ID" title="VIDEO_TITLE" frameborder="0" allowfullscreen loading="lazy"></iframe>
+  <p class="caption">Brief description of the exercise.</p>
+</div>
+```
+
+### Exercise catalogue
+
+1. **Box jump with number recall** – Perform a two‑footed box jump to a sturdy platform while simultaneously listening to a series of numbers read out by a partner. On landing, repeat the numbers in order. *Benefits:* builds explosive power, coordination and short‑term memory. *Filming:* wide shot from a 45 ° angle to capture take‑off and landing; close‑up of feet on landing. Cue the athlete to engage core, drive through the heels and repeat numbers clearly. Remind them to step down safely.
+
+2. **Ladder drill with maths** – Use an agility ladder on the ground. As you perform high‑knees through each rung, call out the answers to simple math equations shouted by a coach (e.g. “7 × 6”). *Benefits:* improves foot speed, cardiovascular fitness and cognitive processing under stress. *Filming:* overhead angle or side view showing foot placement. Cue quick feet, upright posture and audible answers. Ensure the area is clear and the ladder lies flat.
+
+3. **Single‑leg balance with memory cards** – Stand on one leg while flipping over playing cards laid out on a table in front of you. Try to match pairs from memory. *Benefits:* enhances ankle stability, core control and working memory. *Filming:* front view capturing full body and cards. Cue soft knees, neutral spine and controlled breathing. Provide options to lightly touch down if balance is lost.
+
+4. **Bear crawl & alphabet** – Crawl on hands and feet (hips low) while reciting the alphabet backwards or spelling a word provided by a partner. *Benefits:* builds shoulder and hip stability while engaging language centres of the brain. *Filming:* side view to show spinal alignment. Cue opposite hand–foot movement, steady breathing and clear enunciation. Provide padding for hands if needed.
+
+5. **Medicine‑ball toss & colour call** – Stand facing a wall and throw a medicine ball with both hands. Immediately after the throw, a partner holds up a coloured card; call out the colour before catching the rebound. *Benefits:* develops upper‑body power, reaction time and visual processing. *Filming:* 3/4 view capturing athlete and wall. Cue full extension through arms, catch with soft elbows and call colours confidently. Use an appropriate weight to maintain control.
+
+6. **Deadlift with equation solving** – Perform deadlifts using a kettlebell or barbell. Between reps, answer a mental arithmetic problem given by a coach. *Benefits:* strengthens posterior chain and trains cognitive load management. *Filming:* side view focusing on hip hinge mechanics. Cue neutral spine, engage lats and drive hips forward. Provide modifications (e.g. lighter weight) for beginners.
+
+7. **Shadow boxing with pattern recall** – Throw a set combination (e.g. jab–cross–hook) while memorising and repeating a sequence of shapes or numbers displayed on a screen. *Benefits:* integrates coordination, timing and working memory. *Filming:* front view with space. Cue footwork, guard position and recall sequence after the combo. Remind to pivot on the ball of the foot for hooks.
+
+8. **Plank & spelling bee** – Hold a forearm plank while spelling challenging words aloud. *Benefits:* improves core endurance and linguistic processing under tension. *Filming:* side view aligning ears, shoulders, hips and ankles. Cue to draw the belly button toward the spine, avoid hip sag and speak clearly. Offer regression to knees if form degrades.
+
+9. **Skipping with naming tasks** – Perform continuous skipping (jump rope) while naming items from a category (e.g. “cities in Europe”) one per jump. *Benefits:* enhances cardiovascular fitness and semantic recall. *Filming:* medium shot capturing rope and feet. Cue upright posture, relaxed shoulders and continuous naming. Provide a slower tempo rope for beginners.
+
+10. **Turkish get‑up & recall** – Execute the full Turkish get‑up with a kettlebell while recalling the last three meals you ate. *Benefits:* integrates full‑body strength, mobility and episodic memory. *Filming:* 45 ° angle to capture transitions; pause at each stage to emphasise alignment. Cue stacked joints, look at the kettlebell throughout, and recall meals slowly. Offer bodyweight version for novices.
+
+11. **Slam ball & reaction lights** – Perform slam ball throws while reacting to a randomised set of lights on a reaction board. Touch the illuminated light immediately after each slam. *Benefits:* merges explosive power with reaction time and decision‑making. *Filming:* frontal view to show both actions. Cue hinge at hips, drive through legs and keep the core engaged. Ensure a safe distance from the board to prevent collisions.
+
+12. **Weighted lunge with trivia** – Walk forward lunges holding dumbbells. After each pair of lunges, answer a trivia question (general knowledge). *Benefits:* strengthens lower body and encourages cognitive flexibility. *Filming:* side view focusing on knee alignment. Cue long stride, front knee over ankle and tall torso. Provide easier load options for beginners.
+
+13. **Rowing intervals & memory recall** – Complete 250‑m rowing intervals on an ergometer. During the rest period, recall items from a previously studied list (e.g. grocery items). *Benefits:* builds aerobic fitness and long‑term recall. *Filming:* side view capturing stroke technique. Cue to drive through legs, hinge at hips and maintain a neutral wrist. Encourage deep breathing during recall.
+
+14. **Bird dog & number sequencing** – From an all‑fours position, extend opposite arm and leg while counting forward in multiples of three. *Benefits:* improves core stability and sequential processing. *Filming:* side view focusing on spinal alignment. Cue to keep hips level, reach long through heel and fingertips, and avoid shifting weight. Provide easier variation by performing on elbows.
+
+15. **Sprint drills & category naming** – Perform 20‑m sprint intervals. At the finish line, name as many animals as possible beginning with a certain letter chosen at random. *Benefits:* boosts speed and engages semantic fluency under high heart rates. *Filming:* track‑side view capturing start and finish. Cue explosive start, relaxation through upper body and deceleration to avoid injury.
+
+16. **Farmer’s carry & storytelling** – Walk 30 m carrying heavy kettlebells or dumbbells while telling a short story or recounting the plot of your favourite film. *Benefits:* increases grip strength and encourages narrative recall. *Filming:* rear view to monitor posture. Cue shoulders down, core engaged and even steps. Offer lighter load to maintain proper gait.
+
+17. **Mobility flow & foreign language practice** – Move through a series of mobility exercises (e.g. world’s greatest stretch, deep squat, hip openers) while practising phrases in a second language. *Benefits:* increases range of motion and language acquisition. *Filming:* 3/4 view capturing movement patterns. Cue controlled transitions, breathing and correct pronunciation. Ensure safe spacing.
+
+18. **Cycling & mental arithmetic** – On a stationary bike, maintain a moderate cadence while continuously adding or subtracting random numbers given by a partner. *Benefits:* develops cardiovascular endurance and mental arithmetic under duress. *Filming:* side view to show posture. Cue to keep back straight, light grip on handlebars and maintain cadence. Provide seat height adjustments to avoid knee strain.
+
+19. **Handstand hold & word association** – Kick up into a wall‑supported handstand and hold while playing a word association game with a partner. *Benefits:* builds shoulder stability, balance and cognitive linkage. *Filming:* side view emphasising alignment. Cue to press through shoulders, keep core tight and maintain breathing. Offer regression to pike plank if handstand is not yet possible.
+
+20. **Resistance band pull‑apart & counting backward** – Perform horizontal band pull‑aparts while counting backwards from 100 in steps of seven. *Benefits:* strengthens rear delts and improves cognitive control. *Filming:* front view focusing on shoulder positioning. Cue to keep arms slightly bent, squeeze shoulder blades and maintain tension on the band. Provide lighter band as needed.
+
+21. **Boxer’s shuffle & dual‑task quiz** – Shuffle laterally over a small distance while answering quiz questions displayed on a tablet. *Benefits:* improves agility and information retrieval. *Filming:* 45 ° angle capturing footwork and screen. Cue light feet, chest upright and quick responses. Keep obstacles clear.
+
+22. **Kettlebell swing & recall of names** – Perform kettlebell swings in sets of 15. Between sets, list names of colleagues, historical figures or friends starting with a randomly chosen letter. *Benefits:* develops posterior‑chain power and memory recall. *Filming:* side view focusing on hip hinge. Cue neutral spine, hinge rather than squat and engage glutes at the top. Provide correct weight selection.
+
+23. **Wall sit & mental rehearsal** – Sit against a wall at 90 ° knee angle while mentally rehearsing a future task (e.g. an upcoming presentation). *Benefits:* builds muscular endurance and mental imagery skills. *Filming:* side view. Cue to maintain flat back against the wall and breathe steadily. Time the hold with a timer visible to the camera.
+
+24. **Skipping figure‑eight & counting** – Swing a short battle rope in a figure‑eight pattern while counting sequentially by twos. *Benefits:* increases shoulder endurance and engages sequential processing. *Filming:* front view capturing rope pattern. Cue to use hips to drive the movement and keep counts loud. Provide lighter rope for beginners.
+
+25. **Seated puzzle solving** – Sit on a stability ball performing gentle single‑leg lifts while assembling a small puzzle (e.g. jigsaw). *Benefits:* challenges balance, core engagement and problem‑solving skills. *Filming:* side view to see leg lifts and puzzle. Cue slow, controlled lifts and maintain focus on puzzle pieces. Ensure the puzzle table is at comfortable height.
+
+These exercises can be categorised into warm‑ups, strength, endurance, mobility or coordination drills. When filming, ensure adequate lighting and minimal background noise. Use a tripod for stability and shoot from multiple angles if demonstrating complex movements. Always warm up before performing demonstrations and follow safety guidelines such as clearing the area, using appropriate loads and wearing supportive footwear.
